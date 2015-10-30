@@ -1,0 +1,40 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+mainClassName = "org.reporter.Main"
+
+version = '1.0'
+
+allprojects {
+    ext.springVersion = "4.2.2.RELEASE"
+    ext.activemqVersion = "5.7.0"
+    ext.camelVersion = "2.15.4"
+    ext.hqldbVersion = "1.8.0.7"
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile "org.springframework:spring-core:${springVersion}"
+    compile "org.apache.activemq:activemq-core:${activemqVersion}"
+    compile "org.apache.activemq:activemq-pool:${activemqVersion}"
+    compile "org.apache.activemq:activemq-camel:${activemqVersion}"
+    compile "org.apache.camel:camel-core:${camelVersion}"
+    compile "org.apache.camel:camel-spring:${camelVersion}"
+    compile "org.apache.camel:camel-jms:${camelVersion}"
+    compile "org.apache.camel:camel-jackson:${camelVersion}"
+    compile "org.apache.camel:camel-sql:${camelVersion}"
+    compile "org.apache.camel:camel-test-spring:${camelVersion}"
+    compile "hsqldb:hsqldb:${hqldbVersion}"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+
